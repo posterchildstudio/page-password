@@ -4,18 +4,18 @@
  *
  * A simple plugin that allows you to password protect a page.
  *
- * @link      https://www.davidpanaho.com
- * @copyright Copyright (c) 2018 David Panaho
+ * @link      https://www.jesseward.com
+ * @copyright Copyright (c) 2018 Jesse Ward
  */
 
-namespace davidpanaho\pagepassword\variables;
+namespace jesseward\pagepassword\variables;
 
-use davidpanaho\pagepassword\PagePassword;
+use jesseward\pagepassword\PagePassword;
 
 use Craft;
 
 /**
- * @author    David Panaho
+ * @author    Jesse Ward
  * @package   PagePassword
  * @since     0.1.0
  */

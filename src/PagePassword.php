@@ -4,13 +4,13 @@
  *
  * A simple plugin that allows you to password protect a page.
  *
- * @link      https://www.davidpanaho.com
- * @copyright Copyright (c) 2018 David Panaho
+ * @link      https://www.posterchild.stuido
+ * @copyright Copyright (c) 2020 Jesse Ward
  */
 
-namespace davidpanaho\pagepassword;
+namespace jesseward\pagepassword;
 
-use davidpanaho\pagepassword\variables\PagePasswordVariable;
+use jesseward\pagepassword\variables\PagePasswordVariable;
 
 use Craft;
 use craft\base\Plugin;
@@ -25,7 +25,7 @@ use yii\base\Event;
 /**
  * Class PagePassword
  *
- * @author    David Panaho
+ * @author    Jesse Ward
  * @package   PagePassword
  * @since     0.1.0
  *
@@ -98,5 +98,4 @@ class PagePassword extends Plugin
 
     // Protected Methods
     // =========================================================================
-
 }
