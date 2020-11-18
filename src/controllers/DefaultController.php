@@ -4,19 +4,20 @@
  *
  * A simple plugin that allows you to password protect a page.
  *
- * @link      https://www.davidpanaho.com
- * @copyright Copyright (c) 2018 David Panaho
+ * @link      https://www.jesseward.com
+ * @copyright Copyright (c) 2018 Jesse Ward
  */
 
-namespace davidpanaho\pagepassword\controllers;
+namespace jesseward\pagepassword\controllers;
 
-use davidpanaho\pagepassword\PagePassword;
+use jesseward\pagepassword\PagePassword;
 
 use Craft;
 use craft\web\Controller;
+use craft\elements\Entry;
 
 /**
- * @author    David Panaho
+ * @author    Jesse Ward
  * @package   PagePassword
  * @since     0.1.0
  */
@@ -37,8 +38,10 @@ class DefaultController extends Controller
     {
         $request = Craft::$app->getRequest();
         $password = $request->getBodyParam('password');
+        $sectionHandle = $request->getBodyParam('sectionHandle');
+        $sectionPassword = Entry::find()->section($sectionHandle)->all()[0]->pagePassword;
 
-        if ($this->passwordIsValid($password)) {
+        if ($this->passwordIsValid($password, $sectionPassword)) {
             $expires = time() + (60*60*24*7*2); // Two weeks
             setcookie(md5('pagePasswordAccess'), 1, $expires, '/');
         } else {
@@ -49,11 +52,13 @@ class DefaultController extends Controller
         $url = $request->getBodyParam('redirect');
 
         return $this->redirect($url);
+        // return var_dump($sectionPassword);
     }
 
-    private function passwordIsValid($password)
+    private function passwordIsValid($password, $sectionPassword)
     {
-        $validPassword = getenv('PAGE_PASSWORD');
+        // $validPassword = getenv('PAGE_PASSWORD');
+        $validPassword = $sectionPassword;
         return ($password === $validPassword);
     }
 }
