@@ -13,6 +13,7 @@ namespace jesseward\pagepassword\variables;
 use jesseward\pagepassword\PagePassword;
 
 use Craft;
+use craft\elements\Entry;
 
 /**
  * @author    Jesse Ward
@@ -24,9 +25,9 @@ class PagePasswordVariable
     // Public Methods
     // =========================================================================
 
-    public function accessGranted()
+    public function accessGranted($sectionHandle)
     {
-        $cookie = md5('pagePasswordAccess');
+        $cookie = md5($sectionHandle);
         return array_key_exists($cookie, $_COOKIE);
     }
 }
