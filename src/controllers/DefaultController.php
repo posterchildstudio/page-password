@@ -45,7 +45,7 @@ class DefaultController extends Controller
             $expires = time() + (60*60*24*7*2); // Two weeks
             setcookie(md5($sectionHandle), 1, $expires, '/');
         } else {
-            Craft::$app->getSession()->setError('Invalid password - please try again');
+            Craft::$app->getSession()->addFlash('error', 'Invalid password - please try again', false);
         }
 
         // TODO: Check if this needs to be more secure

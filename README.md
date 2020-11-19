@@ -33,12 +33,18 @@ Then, in the template for that single add the following:
 {% else %}
 
     <h1>Enter your access code:</h1>
-    {% if error is defined %}
-        <p class="error">{{ error }}</p>
+    
+    {% set sessionErrors = craft.app.session.getFlash('error') %}
+    {% if sessionErrors is defined %}
+        <ul class="mb-2 text-center">
+            {% for error in sessionErrors %}
+                <li class="text-base">{{ error }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
     <form method="post" action="" accept-charset="UTF-8">
         {{ csrfInput() }}
-        <input type="hidden" name="redirect" value="/{{ entry.slug }}">
+        <input type="hidden" name="redirect" value="/{{ craft.app.request.pathInfo }}">
         <input type="hidden" name="sectionHandle" value="{{ entry.getSection().handle }}">
         <input type="hidden" name="action" value="page-password/default/authorise">
         <input type="text" name="password" value="">
