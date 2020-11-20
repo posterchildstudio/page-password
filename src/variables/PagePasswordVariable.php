@@ -25,9 +25,9 @@ class PagePasswordVariable
     // Public Methods
     // =========================================================================
 
-    public function accessGranted($sectionHandle)
+    public function accessGranted($id)
     {
-        $cookie = md5($sectionHandle);
+        $cookie = md5($id);
         return array_key_exists($cookie, $_COOKIE);
     }
 }

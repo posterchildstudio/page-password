@@ -26,7 +26,8 @@ After installing, create a single that you'd like to password protect.  Then cre
 Then, in the template for that single add the following:
 
 ```html
-{% if craft.pagePassword.accessGranted(entry.getSection().handle) %}
+{% set id = entry.id|md5 %}
+{% if craft.pagePassword.accessGranted(id) %}
 
     <p>Whatever you want to give acccess to</p>
 
@@ -45,7 +46,8 @@ Then, in the template for that single add the following:
     <form method="post" action="" accept-charset="UTF-8">
         {{ csrfInput() }}
         <input type="hidden" name="redirect" value="/{{ craft.app.request.pathInfo }}">
-        <input type="hidden" name="sectionHandle" value="{{ entry.getSection().handle }}">
+        <input type="hidden" name="pageId" value="{{ entry.id }}">
+        <input type="hidden" name="id" value="{{ entry.id|md5 }}">
         <input type="hidden" name="action" value="page-password/default/authorise">
         <input type="text" name="password" value="">
         <input type="submit" value="Log In">

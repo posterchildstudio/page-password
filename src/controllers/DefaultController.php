@@ -38,12 +38,13 @@ class DefaultController extends Controller
     {
         $request = Craft::$app->getRequest();
         $password = $request->getBodyParam('password');
-        $sectionHandle = $request->getBodyParam('sectionHandle');
-        $sectionPassword = Entry::find()->section($sectionHandle)->all()[0]->pagePassword;
+        $id = $request->getBodyParam('id');
+        $pageId = $request->getBodyParam('pageId');
+        $pagePassword = Entry::find()->id($pageId)->one()->pagePassword;
 
-        if ($this->passwordIsValid($password, $sectionPassword)) {
+        if ($this->passwordIsValid($password, $pagePassword)) {
             $expires = time() + (60*60*24*7*2); // Two weeks
-            setcookie(md5($sectionHandle), 1, $expires, '/');
+            setcookie(md5($id), 1, $expires, '/');
         } else {
             Craft::$app->getSession()->addFlash('error', 'Invalid password - please try again', false);
         }
@@ -52,13 +53,13 @@ class DefaultController extends Controller
         $url = $request->getBodyParam('redirect');
 
         return $this->redirect($url);
-        // return var_dump($sectionPassword);
+        // return var_dump($pagePassword);
     }
 
-    private function passwordIsValid($password, $sectionPassword)
+    private function passwordIsValid($password, $pagePassword)
     {
         // $validPassword = getenv('PAGE_PASSWORD');
-        $validPassword = $sectionPassword;
+        $validPassword = $pagePassword;
         return ($password === $validPassword);
     }
 }
