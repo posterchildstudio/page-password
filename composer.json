@@ -2,7 +2,7 @@
     "name": "jesseward/page-password",
     "description": "A simple plugin that allows you to password protect a page.",
     "type": "craft-plugin",
-    "version": "0.1.0",
+    "version": "1.0",
     "keywords": [
         "craft",
         "cms",
@@ -11,14 +11,14 @@
         "page password"
     ],
     "support": {
-        "docs": "https://github.com/jesseward/page-password/blob/master/README.md",
-        "issues": "https://github.com/jesseward/page-password/issues"
+        "docs": "https://github.com/posterchildstudio/page-password/blob/master/README.md",
+        "issues": "https://github.com/posterchildstudio/page-password/issues"
     },
     "license": "MIT",
     "authors": [
         {
             "name": "Jesse Ward",
-            "homepage": "https://www.jesseward.com"
+            "homepage": "https://posterchild.studio"
         }
     ],
     "require": {
@@ -35,7 +35,7 @@
         "schemaVersion": "0.1.0",
         "hasCpSettings": false,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/jesseward/page-password/master/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/posterchildstudio/page-password/master/CHANGELOG.md",
         "class": "jesseward\\pagepassword\\PagePassword"
     }
 }
