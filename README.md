@@ -23,6 +23,8 @@ WIP
 
 After installing, create a single that you'd like to password protect.  Then create a text field with the handle of 'pagePassword' and add it to that section.  Whatever password you type into that field will protect that single.
 
+Currently requires the plugin: https://plugins.craftcms.com/md5-twig-filter
+
 Then, in the template for that single add the following:
 
 ```html
